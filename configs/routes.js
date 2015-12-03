@@ -13,4 +13,4 @@ export default {
         title: 'About',
         handler: require('../components/About')
     }
-};
+}

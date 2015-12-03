@@ -16,7 +16,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import app from './app';
 import HtmlComponent from './components/Html';
-import { createElementWithContext } from 'fluxible-addons-react';
+import {createElementWithContext} from 'fluxible-addons-react';
+import dataService from './services/data';
+
+
+dataService.initialize();
+
 const env = process.env.NODE_ENV;
 
 const debug = debugLib('spoilerfreedota2');

@@ -6,7 +6,7 @@ import debug from 'debug';
 import { createElementWithContext } from 'fluxible-addons-react';
 import app from './app';
 
-import './styles/main.scss'; // add css in style tag
+import './styles/main.scss';
 
 const debugClient = debug('spoilerfreedota2');
 const dehydratedState = window.App; // Sent from the server
