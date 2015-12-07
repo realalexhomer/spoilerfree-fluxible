@@ -10,6 +10,7 @@
     "start": "node start.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.2.20",
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
     "bluebird": "^3.0.6",

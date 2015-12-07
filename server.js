@@ -20,7 +20,20 @@ import {createElementWithContext} from 'fluxible-addons-react';
 import dataService from './services/data';
 
 
-dataService.initialize();
+dataService.initialize('3671')
+.catch( (err) => { throw err} )
+.then( (res) => {
+    return dataService.getAll('3671')
+})
+.catch( (err) => { throw err} )
+.then( (res) => {
+    // put into flux store here
+})
+.catch( (err) => {
+    consle.log(err);
+})
+
+dataService.getAll().then( (res) => {console.log(res)}); 
 
 const env = process.env.NODE_ENV;
 
