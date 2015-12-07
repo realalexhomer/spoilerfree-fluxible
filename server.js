@@ -18,22 +18,36 @@ import app from './app';
 import HtmlComponent from './components/Html';
 import {createElementWithContext} from 'fluxible-addons-react';
 import dataService from './services/data';
+import steam from './services/data/steam';
 
+const appCache = {};
 
-dataService.initialize('3671')
-.catch( (err) => { throw err} )
-.then( (res) => {
-    return dataService.getAll('3671')
-})
-.catch( (err) => { throw err} )
-.then( (res) => {
-    // put into flux store here
-})
-.catch( (err) => {
-    consle.log(err);
+steam.getTournament('3671')
+.then((res) => {
+    appCache.frankfurt = res;
+    console.log(appCache);
 })
 
-dataService.getAll().then( (res) => {console.log(res)}); 
+app.use(bodyParser.json());
+
+app.use('/api', Fetcher.middleware());
+
+
+// dataService.initialize('3671')
+// .catch( (err) => { throw err} )
+// .then( (res) => {
+//     return dataService.getAll('3671')
+// })
+// .catch( (err) => { throw err} )
+// .then( (res) => {
+//     // appCache['3671'] = res;
+//     console.log('app cache is', appCache);
+// })
+// .catch( (err) => {
+//     consle.log(err);
+// })
+
+// dataService.getAll().then( (res) => {console.log(res)}); 
 
 const env = process.env.NODE_ENV;
 
@@ -80,6 +94,9 @@ server.use((req, res, next) => {
         res.end();
     });
 });
+
+server.get('/api/tournament/:id', function(req, res){
+})
 
 const port = process.env.PORT || 3000;
 server.listen(port);
